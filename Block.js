@@ -7,7 +7,7 @@ constructor (timestamp, lasthash, hash, data){
         this.timestamp = timestamp ;
         this.lasthash = lasthash ;
         this.hash= hash;
-        this.date = data;
+        this.data = data;
     
         
         
@@ -25,7 +25,7 @@ Data : ${this.data}`;
     static Genesis()
     {
         
-        return new this("Genesis","fdfgbstg-rtg56e4g5654fd64g","kasjbdufs5df46g464gr48g4-df9g48df4g",null);
+        return new this("Genesis","fdfgbstg-rtg56e4g5654fd64g","kasjbdufs5df46g464gr48g4-df9g48df4g","hi");
         
         
     }
@@ -39,6 +39,12 @@ Data : ${this.data}`;
     }
     static hash(timestamp, lasthash ,data){
         return SHA256(`${timestamp}${lasthash}${data}`).toString();
+        
+        
+    }
+    
+    static blockHash(blck){
+        return SHA256(`${blck.timestamp}${blck.lasthash}${blck.data}`).toString();
         
         
     }
