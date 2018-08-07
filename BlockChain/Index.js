@@ -15,7 +15,7 @@ class BlockChain {
     
     
     
-    isValidChain(chain){
+   static isValidChain(chain){
         if(JSON.stringify(chain[0]) !== JSON.stringify(Block.Genesis())) 
             return false;
         for(let i=1 ; i < chain.length;i++){
@@ -27,12 +27,32 @@ class BlockChain {
                
                ||
                
-               block.hash !== Block.blockHash(block))
+               block.hash !== Block.blockHash(block)
+              
+              )
+                
                 return false ;
             
     
             
         }
+        return true ;
+        
+    }
+    
+    replaceChain(newChain){
+        if(newChain.length <= this.chain.length){
+            console.log('received chain isnt longer than the current one');
+            return ;
+            
+        }else if(BlockChain.isValidChain(newChain)){
+            console.log('received chain is invalid') ;
+            return ;
+            
+            
+        }
+        this.chain =newChain ;
+        console.log('replacing the current chain with longer one');
         
         
     }
